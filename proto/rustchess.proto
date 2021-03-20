@@ -1,0 +1,31 @@
+syntax = "proto3";
+package rustchess;
+
+service RustChess {
+  rpc Game (stream GameMessage) returns (stream GameMessage) {}
+}
+
+message GameMessage {
+  oneof Request {
+    Move move = 1;
+    AsyncRequest async_request = 2;
+  }
+}
+
+message Position {
+  uint32 file = 1;
+  uint32 rank = 2;
+}
+
+message Move {
+  Position original_position = 1;
+  Position new_position = 2;
+}
+
+message AsyncRequest {
+  enum Type {
+    DRAW = 0;
+    RESIGN = 1;
+  }
+  Type type = 1;
+}
