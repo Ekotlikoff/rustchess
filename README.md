@@ -1,2 +1,5 @@
 - [x] Look for a bitboard library to maintain the state and determine legal moves
-- [ ] gRPC server for gochess to connect to
+- [x] gRPC server for gochess to connect to
+- [ ] Makefile
+- [ ] Travis CI integration
+- [ ] Tests
