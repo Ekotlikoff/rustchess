@@ -48,11 +48,15 @@ impl RustChess for ChessEngine {
                     game_message::Request::ChessMove(msg) => {
                         let opponent_move = chess_engine_move_to_chess_move(msg);
                         chess_eng.take_move(opponent_move);
-                        let chess_move = chess_eng.choose_move()
-                            .expect("Could not find valid move");
-                        chess_eng.take_move(chess_move);
-                        // send move to stream
-                        yield create_game_msg(chess_move)
+                        let chess_move_o = chess_eng.choose_move();
+                        match chess_move_o {
+                            Some(chess_move) => {
+                                chess_eng.take_move(chess_move);
+                                // send move to stream
+                                yield create_game_msg(chess_move);
+                            },
+                            None => return,
+                        }
                     }
                     _ => println!("other"),
                 }
