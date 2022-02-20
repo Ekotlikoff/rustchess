@@ -1,5 +1,1 @@
-- [x] Look for a bitboard library to maintain the state and determine legal moves
-- [x] gRPC server for gochess to connect to
-- [ ] Makefile
-- [ ] Travis CI integration
-- [ ] Tests
+A dumb (for now) chess engine that acts as a bot for https://github.com/ekotlikoff/gochess
