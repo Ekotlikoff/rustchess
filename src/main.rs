@@ -96,11 +96,10 @@ fn chess_engine_move_to_chess_move(chess_move: ChessMove) -> chess::ChessMove {
     let new_position = chess_move.new_position.expect("Expected positon");
     let dest_rank = new_position.rank as usize;
     let dest_file = new_position.file as usize;
-    let promote_piece = promote_piece_to_piece(chess_move.promote_piece);
     return chess::ChessMove::new(
         Square::make_square(Rank::from_index(source_rank), File::from_index(source_file)),
         Square::make_square(Rank::from_index(dest_rank), File::from_index(dest_file)),
-        promote_piece,
+        promote_piece_to_piece(chess_move.promote_piece),
     );
 }
 
