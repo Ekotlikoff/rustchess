@@ -1,0 +1,25 @@
+version: 0.2
+
+env:
+  shell: bash
+
+phases:
+  install:
+    commands:
+      - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - source $HOME/.cargo/env
+      - cargo version
+      - rustup -V
+      - env
+  build:
+    commands:
+      - cargo build --release
+
+artifacts:
+  files:
+    - target/release/chess_engine
+  discard-paths: "yes"
+
+cache:
+  paths:
+    - $HOME/.cargo/registry/**/*
